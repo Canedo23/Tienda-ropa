@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart"; // Nueva importación
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Products />} />
           <Route path="/producto/:id" element={<ProductDetail />} />
+          <Route path="/carrito" element={<Cart />} /> {/* Nueva ruta */}
         </Routes>
       </Router>
     </CartProvider>
