@@ -18,17 +18,16 @@ const mockProducts: Product[] = [
 ];
 
 const ProductDetail = () => {
-  const { id } = useParams<{ id: string }>(); // Captura el ID desde la URL
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const foundProduct = mockProducts.find((p) => p.id === Number(id));
     if (foundProduct) {
       setProduct(foundProduct);
     } else {
-      navigate("/productos"); // Redirigir si el producto no existe
+      navigate("/productos");
     }
   }, [id, navigate]);
 
@@ -36,6 +35,9 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail-container">
+      <button className="back-button" onClick={() => navigate("/productos")}>
+        ← Volver a Productos
+      </button>
       <img src={product.image} alt={product.name} className="product-detail-image" />
       <div className="product-detail-info">
         <h1>{product.name}</h1>
@@ -43,11 +45,7 @@ const ProductDetail = () => {
         <p>{product.description}</p>
         <p><strong>Categoría:</strong> {product.category}</p>
         <p><strong>Stock disponible:</strong> {product.stock}</p>
-        {isLoggedIn ? (
-          <button className="add-to-cart">Agregar al carrito</button>
-        ) : (
-          <button className="login-button" onClick={() => navigate("/login")}>Iniciar sesión</button>
-        )}
+        <button className="add-to-cart">Agregar al carrito</button>
       </div>
     </div>
   );
