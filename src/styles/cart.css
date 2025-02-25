@@ -25,6 +25,26 @@
     border-radius: 8px;
   }
   
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+  }
+  
+  .quantity-controls button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .quantity-controls button:hover {
+    background: #0056b3;
+  }
+  
   button {
     background: red;
     color: white;
@@ -36,5 +56,18 @@
   
   button:hover {
     background: darkred;
+  }
+  
+  .login-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background: #0056b3;
   }
   
