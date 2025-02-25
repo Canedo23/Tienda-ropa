@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "../styles/productDetail.css"; // Importamos los estilos
+import { useCart } from "../context/CartContext";
+import "../styles/productDetail.css";
 
-interface Product {
+interface Product {  
   id: number;
   name: string;
   price: number;
@@ -20,16 +21,13 @@ const mockProducts: Product[] = [
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    const foundProduct = mockProducts.find((p) => p.id === Number(id));
-    if (foundProduct) {
-      setProduct(foundProduct);
-    } else {
-      navigate("/productos");
-    }
-  }, [id, navigate]);
+    const foundProduct = mockProducts.find((p) => p.id === Number(id)) || null;
+    setProduct(foundProduct);
+  }, [id]);
 
   if (!product) return <p>Cargando...</p>;
 
@@ -45,7 +43,9 @@ const ProductDetail = () => {
         <p>{product.description}</p>
         <p><strong>Categoría:</strong> {product.category}</p>
         <p><strong>Stock disponible:</strong> {product.stock}</p>
-        <button className="add-to-cart">Agregar al carrito</button>
+        <button className="add-to-cart" onClick={() => addToCart(product)}>
+          Agregar al carrito 🛒
+        </button>
       </div>
     </div>
   );
