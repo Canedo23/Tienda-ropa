@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Products from "./pages/Products"; // Importa la nueva página
+import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail"; // Importa la nueva página
 
 function App() {
   return (
@@ -9,10 +10,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<Products />} /> {/* Nueva ruta */}
+        <Route path="/productos" element={<Products />} />
+        <Route path="/producto/:id" element={<ProductDetail />} /> {/* Nueva ruta */}
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
