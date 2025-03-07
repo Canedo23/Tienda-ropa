@@ -1,9 +1,11 @@
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 
 const Checkout = () => {
-  const { cart, clearCart, totalPrice, isLoggedIn } = useCart();
+  const { cart, clearCart, totalPrice } = useCart(); // ✅ Ahora no incluye isLoggedIn
+  const { isLoggedIn } = useAuth(); // ✅ Se obtiene de AuthContext
   const navigate = useNavigate();
 
   if (!isLoggedIn) {
@@ -27,22 +29,7 @@ const Checkout = () => {
   return (
     <div className="checkout-container">
       <h1>Finalizar Compra</h1>
-      <div className="checkout-summary">
-        <h2>Resumen de compra</h2>
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id} className="checkout-item">
-              <img src={item.image} alt={item.name} className="checkout-image" />
-              <div className="checkout-details">
-                <h3>{item.name}</h3>
-                <p>Cantidad: {item.quantity}</p>
-                <p>Precio: ${item.price.toFixed(2)}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <h2 className="checkout-total">Total a pagar: ${totalPrice.toFixed(2)}</h2>
+      <h2>Total a pagar: ${totalPrice.toFixed(2)}</h2>
       <button className="confirm-button" onClick={handlePurchase}>Confirmar Pago</button>
     </div>
   );

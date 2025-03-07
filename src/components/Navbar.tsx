@@ -1,27 +1,29 @@
+import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
-import "../styles/navbar.css";
 
 const Navbar = () => {
-    const { cart } = useCart();
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
+  const { cart } = useCart();
 
   return (
-    <nav className="navbar">
-      <h2>Tienda de Ropa</h2>
-      <ul>
-        <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/productos">Productos</Link></li>
-        {isLoggedIn ? (
-          <>
-            <li><Link to="/carrito">🛒 <span className="cart-count">{cart.length}</span></Link></li>
-            <li><button className="logout-button" onClick={logout}>Cerrar Sesión</button></li>
-          </>
-        ) : (
-          <li><Link to="/login">Iniciar Sesión</Link></li>
-        )}
-      </ul>
+    <nav>
+      <h1>Tienda de Ropa</h1>
+      <Link to="/">Inicio</Link>
+      <Link to="/productos">Productos</Link>
+      {isLoggedIn && <Link to="/carrito">🛒 Carrito ({cart.length})</Link>}
+      {isLoggedIn ? (
+        <>
+          <span>👤 {user?.username}</span>
+          <button onClick={logout}>Cerrar Sesión</button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Iniciar Sesión</Link>
+          <Link to="/register">Registrarse</Link>
+        </>
+      )}
     </nav>
   );
 };

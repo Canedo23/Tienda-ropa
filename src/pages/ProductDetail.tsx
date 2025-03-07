@@ -25,30 +25,36 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    const foundProduct = mockProducts.find((p) => p.id === Number(id)) || null;
-    setProduct(foundProduct);
+    const Product = mockProducts.find((p) => p.id === Number(id)) || null;
+    setProduct(Product);
   }, [id]);
 
   if (!product) return <p>Cargando...</p>;
 
   return (
     <div className="product-detail-container">
-      <button className="back-button" onClick={() => navigate("/productos")}>
-        ← Volver a Productos
-      </button>
       <img src={product.image} alt={product.name} className="product-detail-image" />
+      
       <div className="product-detail-info">
         <h1>{product.name}</h1>
         <p className="product-price">${product.price}</p>
         <p>{product.description}</p>
         <p><strong>Categoría:</strong> {product.category}</p>
         <p><strong>Stock disponible:</strong> {product.stock}</p>
-        <button className="add-to-cart" onClick={() => addToCart(product)}>
-          Agregar al carrito 🛒
-        </button>
+  
+        {/* Contenedor de botones bien alineado */}
+        <div className="product-detail-buttons">
+          <button className="back-button" onClick={() => navigate("/productos")}>
+            ← Volver a Productos
+          </button>
+          <button className="add-to-cart" onClick={() => addToCart({ ...product, quantity: 1 })}>
+            Agregar al carrito 🛒
+          </button>
+        </div>
       </div>
     </div>
   );
+  
 };
 
 export default ProductDetail;

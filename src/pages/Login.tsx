@@ -1,46 +1,34 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.css";
 
 const Login = () => {
-  const { isLoggedIn, login } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
 
-  if (isLoggedIn) {
-    navigate("/"); // Si ya está logueado, redirigir a la página principal
-    return null;
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const success = login(username, password);
-    if (success) {
+    if (login(formData.username, formData.password)) {
       navigate("/");
     } else {
-      setError("Usuario o contraseña incorrectos");
+      setError("Usuario o contraseña incorrectos.");
     }
   };
 
   return (
     <div className="login-container">
-      <h1>Iniciar Sesión</h1>
-      {error && <p className="error">{error}</p>}
+      <h2>Iniciar Sesión</h2>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input type="text" name="username" placeholder="Usuario" onChange={handleChange} />
+        <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
         <button type="submit">Iniciar Sesión</button>
       </form>
     </div>
