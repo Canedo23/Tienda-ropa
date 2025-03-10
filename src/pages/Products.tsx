@@ -3,12 +3,12 @@ import "../styles/products.css"; // Asegúrate de importar los estilos
 
 const Products = () => {
   const products = [
-    { id: 1, name: "Camiseta Blanca", price: 19.99, image: "/img/camiseta1.jpg" },
-    { id: 2, name: "Jeans Clásicos", price: 39.99, image: "/img/jeans.jpg" },
-    { id: 3, name: "Chaqueta Negra", price: 59.99, image: "/img/chaqueta.jpg" },
-    { id: 4, name: "Zapatillas Deportivas", price: 49.99, image: "/img/zapatillas.jpg" },
-    { id: 5, name: "Bolso Casual", price: 29.99, image: "/img/bolso.jpg" },
-    { id: 6, name: "Reloj Moderno", price: 89.99, image: "/img/reloj.jpg" }
+    { id: 1, name: "BASIC STÜSSY THERMAL", price: 80, image: "../../public/img/camisetaStussy.webp" },
+    { id: 2, name: "DICE ZIP HOODIE PIGMENT DYED", price: 140, image: "../../public/img/sudaderaStussy.webp" },
+    { id: 3, name: "HANDWRITTEN SWEATER", price: 150, image: "../../public/img/jerseyStussy.webp" },
+    { id: 4, name: "Zapatillas Deportivas", price: 49.99, image: "../../public/img/pantalonesStussy.webp" },
+    { id: 5, name: "Bolso Casual", price: 29.99, image: "../../public/img/chaquetaStussy.webp" },
+    { id: 6, name: "Reloj Moderno", price: 89.99, image: "../../public/img/calcetinesStussy.webp" }
   ];
 
   return (

@@ -14,8 +14,12 @@ interface Product {
 }
 
 const mockProducts: Product[] = [
-  { id: 1, name: "Camiseta Blanca", price: 19.99, image: "/img/camiseta1.jpg", description: "Camiseta 100% algodón", category: "camisas", stock: 10 },
-  { id: 2, name: "Jeans Clásicos", price: 39.99, image: "/img/jeans.jpg", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 }
+  { id: 1, name: "Camiseta Blanca", price: 80, image: "../../public/img/camisetaStussy.webp", description: "Camiseta 100% algodón", category: "camisas", stock: 10 },
+  { id: 2, name: "Jeans Clásicos", price: 140, image: "../../public/img/sudaderaStussy.webp", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 },
+  { id: 3, name: "HANDWRITTEN SWEATER", price: 150, image: "../../public/img/jerseyStussy.webp", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 },
+  { id: 4, name: "MILITARY CARGO PANT RIPSTOP", price: 155, image: "../../public/img/pantalonesStussy.webp", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 },
+  { id: 5, name: "SURF TEAM HARRINGTON JACKET", price: 185, image: "../../public/img/chaquetaStussy.webp", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 },
+  { id: 6, name: "WASHED HELVETICA CREW SOCK", price: 15, image: "../../public/img/calcetinesStussy.webp", description: "Jeans cómodos y resistentes", category: "pantalones", stock: 5 }
 ];
 
 const ProductDetail = () => {
