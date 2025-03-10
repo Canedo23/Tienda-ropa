@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer"; // Importa el footer
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -19,7 +20,7 @@ const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
 function App() {
   return (
     <AuthProvider>
-      <CartProvider> {/* ✅ Ahora CartProvider envuelve toda la app */}
+      <CartProvider>
         <Router>
           <Navbar />
           <Routes>
@@ -31,6 +32,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
+          <Footer /> {/* Agrega el footer aquí */}
         </Router>
       </CartProvider>
     </AuthProvider>

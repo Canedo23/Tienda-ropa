@@ -3,17 +3,18 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2c3e50; /* Color más discreto (azul oscuro) */
+  background-color: #000000; /* Fondo negro */
   padding: 10px 20px; /* Reducimos el padding para que esté más compacto */
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* 📌 Contenedor de los enlaces */
+/* 📌 Contenedor de los enlaces (agrupados a la derecha) */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 10px; /* Reducimos el espacio entre los elementos */
+  gap: 20px; /* Espacio entre los elementos */
+  margin-left: auto; /* Mueve todo a la derecha */
 }
 
 /* 📌 Estilos de los enlaces */
@@ -21,7 +22,6 @@ nav a {
   color: white;
   text-decoration: none;
   font-size: 16px; /* Reducimos un poco el tamaño de la fuente */
-  margin-right: 10px; /* Reducimos el margen derecho */
   transition: all 0.3s ease; /* Transición suave para todos los cambios */
   font-weight: bold;
 }
@@ -55,7 +55,7 @@ nav button:hover {
   margin-right: 10px; /* Reducimos el margen derecho */
   display: flex;
   align-items: center;
-  gap: 8px; /* Reducimos el espacio entre los elementos */
+  gap: 8px; /* Espacio entre el icono y el nombre de usuario */
 }
 
 /* 📌 Icono del carrito */

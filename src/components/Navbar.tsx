@@ -15,7 +15,9 @@ const Navbar = () => {
       {isLoggedIn && <Link to="/carrito">🛒 Carrito ({cart.length})</Link>}
       {isLoggedIn ? (
         <>
-          <span>👤 {user?.username}</span>
+          <span>
+            👤 {user?.username}
+          </span>
           <button onClick={logout}>Cerrar Sesión</button>
         </>
       ) : (

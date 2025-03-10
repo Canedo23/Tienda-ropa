@@ -1,0 +1,35 @@
+/* 📌 Estilos del footer */
+.footer {
+    background-color: #000000; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Para que el footer se quede abajo */
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #ffdd57; /* Color al pasar el cursor */
+  }
