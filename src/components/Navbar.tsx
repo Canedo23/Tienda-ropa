@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <h1>Tienda de Ropa</h1>
+      <h1>Stüssy</h1>
       <Link to="/">Inicio</Link>
       <Link to="/productos">Productos</Link>
       {isLoggedIn && <Link to="/carrito">🛒 Carrito ({cart.length})</Link>}

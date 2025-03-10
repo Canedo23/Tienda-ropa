@@ -6,9 +6,9 @@ const Products = () => {
     { id: 1, name: "BASIC STÜSSY THERMAL", price: 80, image: "../../public/img/camisetaStussy.webp" },
     { id: 2, name: "DICE ZIP HOODIE PIGMENT DYED", price: 140, image: "../../public/img/sudaderaStussy.webp" },
     { id: 3, name: "HANDWRITTEN SWEATER", price: 150, image: "../../public/img/jerseyStussy.webp" },
-    { id: 4, name: "Zapatillas Deportivas", price: 49.99, image: "../../public/img/pantalonesStussy.webp" },
-    { id: 5, name: "Bolso Casual", price: 29.99, image: "../../public/img/chaquetaStussy.webp" },
-    { id: 6, name: "Reloj Moderno", price: 89.99, image: "../../public/img/calcetinesStussy.webp" }
+    { id: 4, name: "MILITARY CARGO PANT RIPSTOP", price: 49.99, image: "../../public/img/pantalonesStussy.webp" },
+    { id: 5, name: "SURF TEAM HARRINGTON JACKET", price: 29.99, image: "../../public/img/chaquetaStussy.webp" },
+    { id: 6, name: "WASHED HELVETICA CREW SOCK", price: 89.99, image: "../../public/img/calcetinesStussy.webp" }
   ];
 
   return (
