@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { auth } from "../firebase-config"; // Importa Firebase Auth
-import { onAuthStateChanged } from "firebase/auth"; // Para escuchar cambios de autenticación
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"; // Para escuchar cambios de autenticación
 
 interface User {
   email: string;
@@ -11,7 +11,7 @@ interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
   register: (email: string, username: string) => void;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string) => void;
   logout: () => void;
 }
 
@@ -41,8 +41,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoggedIn(true);
   };
 
-  const login = async (email: string, password: string) => {
-    // Implementa la lógica de inicio de sesión aquí
+  const login = (email: string) => {
+    setUser({ email, username: "" }); // Puedes cargar el username desde Firestore
+    setIsLoggedIn(true);
   };
 
   const logout = async () => {

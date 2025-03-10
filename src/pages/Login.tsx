@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore"; // Importa Firestore
-import { db } from "../firebase-config"; // Importa la instancia de Firestore
+import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase Auth
+import { auth } from "../firebase-config"; // Importa Firebase Auth
 import "../styles/login.css";
 
 const Login = () => {
@@ -11,6 +11,7 @@ const Login = () => {
 
   const [formData, setFormData] = useState({
     email: "",
+    password: "",
   });
 
   const [error, setError] = useState("");
@@ -22,27 +23,25 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.email) {
-      setError("Por favor, ingresa tu correo electrónico.");
+    if (!formData.email || !formData.password) {
+      setError("Por favor, ingresa tu correo electrónico y contraseña.");
       return;
     }
 
     try {
-      // Verificar si el correo existe en Firestore
-      const userRef = doc(db, "users", formData.email);
-      const userDoc = await getDoc(userRef);
+      // Iniciar sesión con Firebase Authentication
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
 
-      if (userDoc.exists()) {
-        // Si el usuario existe, iniciar sesión
-        const userData = userDoc.data();
-        login(userData.email);
-        navigate("/");
-      } else {
-        setError("El correo electrónico no está registrado.");
-      }
+      // Actualizar el estado de autenticación
+      login(userCredential.user.email || "");
+      navigate("/");
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      setError("Ocurrió un error al iniciar sesión. Inténtalo de nuevo.");
+      setError("Correo electrónico o contraseña incorrectos.");
     }
   };
 
@@ -56,6 +55,13 @@ const Login = () => {
           name="email"
           placeholder="Correo electrónico"
           value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          value={formData.password}
           onChange={handleChange}
         />
         <button type="submit">Iniciar Sesión</button>
