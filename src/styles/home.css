@@ -1,60 +1,60 @@
 .home-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .hero {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    padding: 50px 20px;
-    border-radius: 10px;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    color: #fff;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-    color: #fff;
-  }
-  
-  .shop-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: #ff5722;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .shop-button:hover {
-    background: #e64a19;
-  }
-  
-  .categories {
-    margin-top: 40px;
-  }
-  
-  .category-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .category-item {
-    background: #f1f1f1;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .category-item:hover {
-    background: #ddd;
-  }
-  
+  text-align: center;
+  padding: 20px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.shop-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-button:hover {
+  background: #e64a19;
+}
+
+.categories {
+  margin-top: 40px;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.category-item {
+  background: #3a506b; /* Color relacionado con el navbar (azul oscuro más claro) */
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: white; /* Texto en blanco para contrastar */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category-item:hover {
+  background: #4a6a8b; /* Un tono más claro al pasar el cursor */
+}

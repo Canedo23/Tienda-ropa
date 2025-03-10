@@ -1,15 +1,17 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { auth } from "../firebase-config"; // Importa Firebase Auth
+import { onAuthStateChanged } from "firebase/auth"; // Para escuchar cambios de autenticación
 
 interface User {
-  username: string;
   email: string;
+  username: string;
 }
 
 interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
-  register: (userData: User) => void;
-  login: (username: string, password: string) => boolean;
+  register: (email: string, username: string) => void;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -17,42 +19,36 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-    return localStorage.getItem("isLoggedIn") === "true";
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
+  // Escuchar cambios en la autenticación
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser({ email: firebaseUser.email || "", username: "" }); // Puedes cargar el username desde Firestore
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const register = (userData: User) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("isLoggedIn", "true");
-    setUser(userData);
+  const register = (email: string, username: string) => {
+    setUser({ email, username });
     setIsLoggedIn(true);
   };
 
-  const login = (username: string, password: string) => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const userData = JSON.parse(storedUser);
-      if (userData.username === username) {
-        setUser(userData);
-        setIsLoggedIn(true);
-        return true;
-      }
-    }
-    return false;
+  const login = async (email: string, password: string) => {
+    // Implementa la lógica de inicio de sesión aquí
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await auth.signOut();
     setUser(null);
     setIsLoggedIn(false);
-    localStorage.removeItem("user");
-    localStorage.removeItem("isLoggedIn");
   };
 
   return (

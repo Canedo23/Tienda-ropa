@@ -29,7 +29,7 @@ const ProductDetail = () => {
     setProduct(Product);
   }, [id]);
 
-  if (!product) return <p>Cargando...</p>;
+  if (!product) return <p>No hay en stock</p>;
 
   return (
     <div className="product-detail-container">
