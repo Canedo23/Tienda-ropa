@@ -6,6 +6,10 @@
   padding: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* 📌 Estilos de cada carta de producto */
 .product-card {
   border: 1px solid #ddd;

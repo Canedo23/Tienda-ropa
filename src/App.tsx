@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; // Importa el footer
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -22,17 +22,21 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<Products />} />
-            <Route path="/producto/:id" element={<ProductDetail />} />
-            <Route path="/carrito" element={<ProtectedRoute element={<Cart />} />} />
-            <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-          <Footer /> {/* Agrega el footer aquí */}
+          <div className="app-container">
+            <Navbar />
+            <div className="main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/productos" element={<Products />} />
+                <Route path="/producto/:id" element={<ProductDetail />} />
+                <Route path="/carrito" element={<ProtectedRoute element={<Cart />} />} />
+                <Route path="/checkout" element={<ProtectedRoute element={<Checkout />} />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
         </Router>
       </CartProvider>
     </AuthProvider>

@@ -1,75 +1,77 @@
-/* Estilos generales del contenedor */
+/* 📌 Contenedor externo (fondo de la página) */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 78vh; /* Ocupa toda la altura de la pantalla */
+  background-image: url("../../public/img/LoginRegister.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* 📌 Contenedor principal del Login */
 .login-container {
-    max-width: 400px;
-    margin: 50px auto;
+  max-width: 400px;
+  padding: 20px;
+  background: #1a1a1a; /* Fondo negro */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+  text-align: center;
+  color: white; /* Texto blanco */
+}
+
+/* 📌 Título */
+.login-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: white; /* Texto blanco */
+}
+
+/* 📌 Estilos para los inputs */
+.login-container input {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #444; /* Borde gris oscuro */
+  border-radius: 5px;
+  font-size: 16px;
+  background: #333; /* Fondo gris oscuro */
+  color: white; /* Texto blanco */
+}
+
+/* 📌 Placeholder de los inputs */
+.login-container input::placeholder {
+  color: #aaa; /* Color del placeholder */
+}
+
+/* 📌 Mensajes de error */
+.error-message {
+  color: #ff4d4d; /* Rojo para errores */
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* 📌 Botón de inicio de sesión */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000000; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border: 1px solid #444; /* Borde gris oscuro */
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #333333; /* Fondo gris oscuro al pasar el cursor */
+}
+
+/* 📌 Responsividad */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
   }
-  
-  /* Título */
-  .login-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  /* Estilos para los inputs */
-  .login-container input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  /* Mensajes de error */
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  /* Botón de inicio de sesión */
-  .login-container button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .login-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Enlace de registro */
-  .register-link {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
-  .register-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .register-link a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsividad */
-  @media (max-width: 480px) {
-    .login-container {
-      width: 90%;
-      padding: 20px;
-    }
-  }
-  
+}

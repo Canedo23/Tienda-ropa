@@ -46,6 +46,8 @@ const Login = () => {
   };
 
   return (
+    <div className="login">
+      <div className="login-img">
     <div className="login-container">
       <h2>Iniciar Sesión</h2>
       {error && <p className="error-message">{error}</p>}
@@ -66,6 +68,8 @@ const Login = () => {
         />
         <button type="submit">Iniciar Sesión</button>
       </form>
+    </div>
+    </div>
     </div>
   );
 };

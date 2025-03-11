@@ -9,22 +9,26 @@ const Navbar = () => {
 
   return (
     <nav>
+      <div>
       <h1>Stüssy</h1>
+      </div>
+      <div className="links">
       <Link to="/">Inicio</Link>
       <Link to="/productos">Productos</Link>
-      {isLoggedIn && <Link to="/carrito">🛒 Carrito ({cart.length})</Link>}
+      </div>
+      {isLoggedIn && <Link to="/carrito">Carrito  🛒({cart.length})</Link>}
       {isLoggedIn ? (
         <>
           <span>
-            👤 {user?.username}
+             {user?.username}
           </span>
           <button onClick={logout}>Cerrar Sesión</button>
         </>
       ) : (
-        <>
+        <div className="logRes">
           <Link to="/login">Iniciar Sesión</Link>
           <Link to="/register">Registrarse</Link>
-        </>
+        </div>
       )}
     </nav>
   );

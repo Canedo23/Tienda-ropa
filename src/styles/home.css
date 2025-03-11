@@ -9,7 +9,7 @@
   background-image: url("../../public/img/FondoStussy.jpg"); /* Cambia la ruta a tu imagen */
   background-size: cover;
   background-position: center;
-  height: 82vh; /* Altura del contenedor */
+  height: 84vh; /* Altura del contenedor */
   display: flex;
   justify-content: center;
   align-items: center;

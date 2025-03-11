@@ -40,7 +40,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-
 /* 📌 Imagen del producto */
 .cart-image {
   width: 80px;
@@ -79,7 +78,7 @@
 }
 
 .quantity-controls button {
-  background: #007bff;
+  background: #000000;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -90,7 +89,14 @@
 }
 
 .quantity-controls button:hover {
-  background: #0056b3;
+  background: #333;
+}
+
+.quantity-controls span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
 }
 
 .quantity-container {
@@ -99,10 +105,9 @@
   gap: 15px; /* ✅ Espaciado entre cantidad y botón eliminar */
 }
 
-
 /* 📌 Botón de eliminar */
 .cart-item button {
-  background: #ff4d4d;
+  background: #000000;
   border: none;
   padding: 8px 12px;
   color: white;
@@ -114,12 +119,7 @@
 }
 
 .cart-item button:hover {
-  background: #cc0000;
-}
-
-
-.cart-item button:hover {
-  background: #cc0000;
+  background: #333;
 }
 
 /* 📌 Precio total */
@@ -132,7 +132,7 @@
 
 /* 📌 Botón de finalizar compra */
 .checkout-button {
-  background: #28a745;
+  background: #000;
   border: none;
   padding: 12px;
   color: white;
@@ -144,7 +144,7 @@
 }
 
 .checkout-button:hover {
-  background: #218838;
+  background: #333;
 }
 
 /* 📌 Responsividad */

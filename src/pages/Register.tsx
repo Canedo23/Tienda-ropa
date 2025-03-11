@@ -47,7 +47,9 @@ const Register = () => {
 
       // 3. Actualizar el estado de autenticación
       register(formData.email, formData.username);
-      navigate("/");
+
+      // 4. Redirigir al Home
+      navigate("/"); // Redirige a la ruta "/"
     } catch (error) {
       console.error("Error al registrar el usuario:", error);
       setError("Error al registrar el usuario. Inténtalo de nuevo.");
@@ -55,33 +57,35 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2>Registro</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Nombre de usuario"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Registrarse</button>
-      </form>
+    <div className="register">
+      <div className="register-container">
+        <h2>Registro</h2>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="username"
+            placeholder="Nombre de usuario"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <button type="submit">Registrarse</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -4,9 +4,20 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: #000000; /* Fondo negro */
-  padding: 10px 20px; /* Reducimos el padding para que esté más compacto */
+  padding: 10px 30px; /* Reducimos el padding para que esté más compacto */
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.links{
+  padding-left: 820px; 
+  display: flex;
+  gap: 60px; 
+}
+
+.logRes{
+  display: flex;
+  gap: 55px;
 }
 
 /* 📌 Contenedor de los enlaces (agrupados a la derecha) */

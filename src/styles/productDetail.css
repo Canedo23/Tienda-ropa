@@ -52,10 +52,10 @@
 
 /* 📌 Botón de añadir al carrito */
 .add-to-cart {
-  background: #28a745;
+  background: #000000; /* Fondo negro */
   border: none;
   padding: 10px 15px;
-  color: white;
+  color: white; /* Texto blanco */
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
@@ -63,7 +63,7 @@
 }
 
 .add-to-cart:hover {
-  background: #218838;
+  background: #333333; /* Fondo gris oscuro al pasar el cursor */
 }
 
 /* 📌 Responsividad */
