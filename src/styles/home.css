@@ -47,6 +47,28 @@
   color: #000;
 }
 
+/* 📌 Sección Descripción */
+.description-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+  margin-top: 20px;
+}
+
+.description-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.description-text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* 📌 Sección de productos destacados */
 .featured-products {
   text-align: center;
@@ -100,77 +122,34 @@
   font-weight: bold;
 }
 
-
-/* 📌 Nueva sección: Descripción y mapa */
-.info-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* 📌 Sección del Mapa */
+.map-section {
   padding: 40px 20px;
-  background-color: #f8f8f8; /* Fondo gris claro */
-}
-
-.description {
-  flex: 1;
-  padding-right: 20px; /* Espacio entre el texto y el mapa */
-}
-
-.description h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.description p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.6;
+  background-color: #f8f8f8;
+  margin-top: 20px;
 }
 
 .map {
-  flex: 1;
-  max-width: 50%; /* El mapa ocupa la mitad del espacio */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* 📌 Responsividad */
-@media (max-width: 768px) {
-  .info-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .description {
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .map {
-    max-width: 100%;
-  }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 📌 Responsividad */
 @media (max-width: 768px) {
   .featured-grid {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .featured-card {
-    width: 180px;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-grid {
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas medianas */
+  .description-text {
+    padding: 0 10px;
   }
 }
 
 @media (max-width: 480px) {
   .featured-grid {
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    grid-template-columns: 1fr;
   }
 }
