@@ -12,6 +12,10 @@ nav {
   overflow: hidden; /* Evita que elementos sobresalgan */
 }
 
+.logo{
+  align-items: center;
+  display: flex;
+}
 
 .links {
   display: flex;
@@ -20,7 +24,11 @@ nav {
   gap: 30px; /* Espacio entre los enlaces */
 }
 
-
+.links, .logRes, nav button {
+  display: flex;
+  align-items: center; /* Alinea los elementos dentro de estos contenedores */
+  gap: 20px;
+}
 
 /* 📌 Contenedor de login/registro */
 .logRes {
