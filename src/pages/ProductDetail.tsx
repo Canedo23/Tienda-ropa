@@ -19,7 +19,14 @@ const mockProducts: Product[] = [
   { id: 3, name: "HANDWRITTEN SWEATER", price: 150, image: "../../public/img/jerseyStussy.webp", description: "Suéter de corte relajado en punto de mezcla de merino y algodón superfino.", category: "Knits", stock: 8 },
   { id: 4, name: "MILITARY CARGO PANT RIPSTOP", price: 155, image: "../../public/img/pantalonesStussy.webp", description: "Pantalón cargo de corte relajado en ripstop de algodón lavado.", category: "Pants", stock: 5 },
   { id: 5, name: "SURF TEAM HARRINGTON JACKET", price: 185, image: "../../public/img/chaquetaStussy.webp", description: "Chaqueta de corte relajado en nailon lavado en prenda. Cuenta con cierre de cremallera de dos direcciones, bolsillos con solapa y puños plisados.", category: "Outerwear", stock: 10 },
-  { id: 6, name: "WASHED HELVETICA CREW SOCK", price: 15, image: "../../public/img/calcetinesStussy.webp", description: "Par único de calcetines de algodón peinado elástico con tratamiento de lavado ácido.", category: "Accessories", stock: 5 }
+  { id: 6, name: "WASHED HELVETICA CREW SOCK", price: 15, image: "../../public/img/calcetinesStussy.webp", description: "Par único de calcetines de algodón peinado elástico con tratamiento de lavado ácido.", category: "Accessories", stock: 5 },
+  { id: 7, name: "SKULLCAP NUMBER 4", price: 40, image: "../../public/img/GorroStussy.webp", description: "Gorro ajustado de punto fino. Serigrafiado con el número 4 de Stüssy.", category: "Headwear", stock: 2 },
+  { id: 8, name: "BLAZER TEXTURED LINEN", price: 285, image: "../../public/img/AmericanaStussy.webp", description: "Blazer de corte relajado en lino texturizado con forro de algodón. Cierre con dos botones de cuerno y hombros desestructurados.", category: "Outerwear", stock: 4 },
+  { id: 9, name: "DUSTER COAT", price: 350, image: "../../public/img/GabardinaStussy.webp", description: "Abrigo de corte holgado en lona de algodón lavada en prenda con tratamiento de resina.", category: "Outerwear", stock: 6 },
+  { id: 10, name: "LANDON SUNGLASSES", price: 160, image: "../../public/img/GafasStussy.webp", description: "Gafas de sol de acetato con forma envolvente y lentes tintadas.", category: "Eyegear", stock: 9 },
+  { id: 11, name: "METAL VENUS LIGHTER", price: 32, image: "../../public/img/MecheroStussy.webp", description: "Estuche metálico para encendedor con ilustración de Venus en relieve y logotipo Stüssy SS Link grabado.", category: "Accessories", stock: 12 },
+  { id: 12, name: "SWIRLY S MONEY CLIP", price: 45, image: "../../public/img/ClipStussy.webp", description: "Pinza para billetes de acero inoxidable con la S en espiral. Logotipo de Stüssy grabado en relieve en la parte posterior.", category: "Accessories", stock: 16 },
+  
 ];
 
 const ProductDetail = () => {
@@ -48,17 +55,25 @@ const ProductDetail = () => {
   
         {/* Contenedor de botones bien alineado */}
         <div className="product-detail-buttons">
-          <button className="back-button" onClick={() => navigate("/productos")}>
-            ← Volver a Productos
-          </button>
-          <button className="add-to-cart" onClick={() => addToCart({ ...product, quantity: 1 })}>
-            Agregar al carrito 🛒
-          </button>
-        </div>
+  <button 
+    className="back-button" 
+    onClick={() => {
+      if (product.id >= 7) {
+        navigate("/"); // Si el ID es 7 o mayor, vuelve al Home
+      } else {
+        navigate("/productos"); // Si el ID es 1-6, vuelve a Productos
+      }
+    }}
+  >
+    ← Volver
+  </button>
+  <button className="add-to-cart" onClick={() => addToCart({ ...product, quantity: 1 })}>
+    Agregar al carrito 🛒
+  </button>
+</div>
       </div>
     </div>
   );
-  
 };
 
 export default ProductDetail;

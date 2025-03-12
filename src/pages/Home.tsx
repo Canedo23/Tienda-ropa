@@ -1,5 +1,15 @@
 import "../styles/home.css"; // Importamos los estilos
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const featuredProducts = [
+  { id: 7, name: "SKULLCAP NUMBER 4", price: 40, image: "../../public/img/GorroStussy.webp" },
+  { id: 8, name: "BLAZER TEXTURED LINEN", price: 285, image: "../../public/img/AmericanaStussy.webp" },
+  { id: 9, name: "DUSTER COAT", price: 350, image: "../../public/img/GabardinaStussy.webp" },
+  { id: 10, name: "LANDON SUNGLASSES", price: 160, image: "../../public/img/GafasStussy.webp" },
+  { id: 11, name: "METAL VENUS LIGHTER", price: 32, image: "../../public/img/MecheroStussy.webp" },
+  { id: 12, name: "SWIRLY S MONEY CLIP", price: 45, image: "../../public/img/ClipStussy.webp" }
+];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,6 +22,21 @@ const Home = () => {
           Ver Productos
         </button>
       </div>
+
+      <section className="featured-products">
+  <h2>Productos Destacados</h2>
+  <div className="featured-grid">
+    {featuredProducts.map((product) => (
+      <div key={product.id} className="featured-card">
+        <Link to={`/producto/${product.id}`}>
+          <img src={product.image} alt={product.name} className="featured-image" />
+          <h3 className="featured-name">{product.name}</h3>
+          <p className="featured-price">${product.price}</p>
+        </Link>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* Nueva sección: Descripción y mapa */}
       <section className="info-section">

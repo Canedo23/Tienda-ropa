@@ -15,9 +15,9 @@ nav {
 
 .links {
   display: flex;
-  gap: 30px; /* Reducimos el espacio entre enlaces */
   margin-left: auto; /* Empuja los enlaces a la derecha sin romper el layout */
   flex-wrap: nowrap; /* Evita que los elementos se vayan abajo */
+  gap: 30px; /* Espacio entre los enlaces */
 }
 
 
@@ -47,6 +47,7 @@ nav a {
   font-size: 16px;
   transition: all 0.3s ease;
   font-weight: bold;
+  margin-left: 20px;
 }
 
 /* 📌 Efecto al pasar el cursor */
@@ -66,6 +67,7 @@ nav button {
   border-radius: 5px;
   transition: background 0.3s ease;
   font-weight: bold;
+  margin-left: 20px;
 }
 
 nav button:hover {
