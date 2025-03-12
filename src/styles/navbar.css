@@ -3,49 +3,61 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #000000; /* Fondo negro */
-  padding: 10px 30px; /* Reducimos el padding para que esté más compacto */
+  background-color: #000000;
+  padding: 10px 25px;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 55px;
+  flex-wrap: nowrap; /* Evita que los elementos bajen */
+  overflow: hidden; /* Evita que elementos sobresalgan */
 }
 
-.links{
-  padding-left: 820px; 
+
+.links {
   display: flex;
-  gap: 60px; 
+  gap: 30px; /* Reducimos el espacio entre enlaces */
+  margin-left: auto; /* Empuja los enlaces a la derecha sin romper el layout */
+  flex-wrap: nowrap; /* Evita que los elementos se vayan abajo */
 }
 
-.logRes{
+
+
+/* 📌 Contenedor de login/registro */
+.logRes {
   display: flex;
-  gap: 55px;
+  gap: 30px; /* Reducimos el espacio para mejor ajuste */
+  flex-wrap: nowrap; /* Evita que los botones bajen */
+  margin-left: 25px;
 }
 
-/* 📌 Contenedor de los enlaces (agrupados a la derecha) */
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espacio entre los elementos */
-  margin-left: auto; /* Mueve todo a la derecha */
+  gap: 20px;
+  justify-content: center; /* Centra los enlaces */
+  flex-wrap: wrap; /* Permite que bajen si no caben */
 }
+
 
 /* 📌 Estilos de los enlaces */
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 16px; /* Reducimos un poco el tamaño de la fuente */
-  transition: all 0.3s ease; /* Transición suave para todos los cambios */
+  font-size: 16px;
+  transition: all 0.3s ease;
   font-weight: bold;
 }
 
 /* 📌 Efecto al pasar el cursor */
 nav a:hover {
-  color: white; /* Mantenemos el color blanco */
-  transform: scale(1.1); /* Aumentamos ligeramente el tamaño */
+  color: white;
+  transform: scale(1.1);
 }
 
 /* 📌 Estilo del botón de cerrar sesión */
 nav button {
-  background-color: #ff4d4d; /* Rojo */
+  background-color: #ff4d4d;
   border: none;
   padding: 8px 12px;
   color: white;
@@ -57,23 +69,22 @@ nav button {
 }
 
 nav button:hover {
-  background-color: #cc0000; /* Rojo oscuro */
+  background-color: #cc0000;
 }
 
 /* 📌 Usuario en el Navbar */
 .nav-user {
   font-weight: bold;
-  margin-right: 10px; /* Reducimos el margen derecho */
   display: flex;
   align-items: center;
-  gap: 8px; /* Espacio entre el icono y el nombre de usuario */
+  gap: 8px;
+  margin-right: 10px;
 }
 
 /* 📌 Icono del carrito */
 .cart-icon {
   font-size: 20px;
   position: relative;
-  margin-right: 10px; /* Reducimos el margen derecho */
   cursor: pointer;
 }
 
@@ -91,18 +102,38 @@ nav button:hover {
 }
 
 /* 📌 Responsividad */
+@media (max-width: 1024px) {
+  .links, .logRes {
+    gap: 15px; /* Reducimos más el espacio */
+  }
+}
+
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    text-align: center;
+    height: auto; /* Permite que el navbar crezca en altura */
+    padding: 10px;
   }
 
   .nav-links {
     flex-direction: column;
-    gap: 8px; /* Reducimos el espacio entre los elementos */
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    width: 100%;
   }
 
-  .cart-icon {
-    margin-right: 0;
+  .links {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .logRes {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
   }
 }
+

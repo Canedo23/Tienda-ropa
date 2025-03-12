@@ -1,35 +1,63 @@
 /* 📌 Estilos del footer */
 .footer {
-    background-color: #000000; /* Color de fondo */
-    color: white; /* Color del texto */
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto; /* Para que el footer se quede abajo */
-  }
-  
+  background-color: #000000; /* Color de fondo */
+  color: white; /* Color del texto */
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto; /* Para que el footer se quede abajo */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #b7b7b7; /* Color al pasar el cursor */
+}
+
+@media (max-width: 768px) {
   .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+      padding: 0 10px;
   }
-  
-  .footer p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  .footer-links {
-    margin-top: 10px;
-  }
-  
   .footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 14px;
-    transition: color 0.3s ease;
+      font-size: 12px;
+      margin: 0 5px;
   }
-  
-  .footer-links a:hover {
-    color: #b7b7b7; /* Color al pasar el cursor */
+}
+
+@media (max-width: 480px) {
+  .footer {
+      padding: 15px 0;
   }
+  .footer p {
+      font-size: 12px;
+  }
+  .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .footer-links a {
+      font-size: 12px;
+      margin: 5px;
+  }
+}

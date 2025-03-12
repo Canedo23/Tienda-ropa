@@ -149,6 +149,10 @@
 
 /* 📌 Responsividad */
 @media (max-width: 768px) {
+  .cart-container {
+    padding: 15px;
+  }
+
   .cart-item {
     flex-direction: column;
     text-align: center;
@@ -156,6 +160,8 @@
 
   .cart-item div {
     margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
   }
 
   .cart-image {
@@ -165,5 +171,44 @@
 
   .quantity-controls {
     justify-content: center;
+    margin-top: 10px;
+  }
+
+  .quantity-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart-item button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container h1 {
+    font-size: 24px;
+  }
+
+  .cart-container p {
+    font-size: 16px;
+  }
+
+  .cart-item h2 {
+    font-size: 16px;
+  }
+
+  .cart-item p {
+    font-size: 14px;
+  }
+
+  .quantity-controls button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+
+  .checkout-button {
+    padding: 10px;
+    font-size: 16px;
   }
 }

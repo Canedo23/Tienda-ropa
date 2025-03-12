@@ -14,8 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 76vh; /* Ocupa toda la altura de la pantalla */
-  background-image: url("../../public/img/LoginRegister.jpg");
+  min-height: 78vh; /* Ocupa toda la altura de la pantalla */
+  background-image: url("../../public/img/FondoLoginRegistro.jpg");
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(5px); /* Aplica un efecto de desenfoque */
