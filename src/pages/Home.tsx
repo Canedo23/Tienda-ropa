@@ -27,11 +27,13 @@ const Home = () => {
       <section className="description-section">
         <h2>Bienvenido a Stüssy</h2>
         <p>
-          En nuestra tienda de ropa, encontrarás las últimas tendencias en moda
-          urbana y deportiva. Ofrecemos una amplia variedad de productos, desde
-          camisetas y sudaderas hasta chaquetas y accesorios. ¡Visítanos y
-          descubre tu estilo único!
+        Moda sin esfuerzo, actitud sin límites. En Stüssy, combinamos lo mejor del diseño urbano 
+        con un toque sofisticado. Sudaderas, gafas, gorros, pantalones y más prendas creadas para quienes saben 
+        que el estilo no sigue reglas, lo define quien lo lleva.</p>
+        <p>
+        Materiales premium, cortes relajados y detalles que marcan la diferencia. No es solo ropa, es una declaración.
         </p>
+        
       </section>
 
       <section className="featured-products">
