@@ -1,7 +1,7 @@
 /* 📌 Contenedor principal del Registro */
 .register-container {
   max-width: 500px;
-  margin: 125px auto;
+  
   padding: 20px;
   background: #1a1a1a; /* Fondo negro */
   border-radius: 8px;

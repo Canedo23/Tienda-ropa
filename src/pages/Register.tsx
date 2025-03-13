@@ -14,6 +14,9 @@ const Register = () => {
     email: "",
     username: "",
     password: "",
+    firstName: "", // Nuevo campo: Nombre
+    lastName: "", // Nuevo campo: Apellidos
+    birthDate: "", // Nuevo campo: Fecha de nacimiento
   });
 
   const [error, setError] = useState("");
@@ -22,11 +25,27 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const isAdult = (birthDate: string): boolean => {
+    const birth = new Date(birthDate);
+    const today = new Date();
+    const age = today.getFullYear() - birth.getFullYear();
+    const monthDiff = today.getMonth() - birth.getMonth();
+    const dayDiff = today.getDate() - birth.getDate();
+    
+    // Verifica si ya cumplió años en el año actual
+    return age > 18 || (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.username || !formData.password) {
+    if (!formData.email || !formData.username || !formData.password || !formData.firstName || !formData.lastName || !formData.birthDate) {
       setError("Todos los campos son obligatorios.");
+      return;
+    }
+
+    if (!isAdult(formData.birthDate)) {
+      setError("Debes ser mayor de 18 años para registrarte.");
       return;
     }
 
@@ -38,11 +57,14 @@ const Register = () => {
         formData.password
       );
 
-      // 2. Guardar el nombre de usuario en Firestore
+      // 2. Guardar la información adicional en Firestore
       const userRef = doc(db, "users", userCredential.user.uid); // Usamos el UID como ID
       await setDoc(userRef, {
         email: formData.email,
         username: formData.username,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        birthDate: formData.birthDate,
       });
 
       // 3. Actualizar el estado de autenticación
@@ -62,6 +84,26 @@ const Register = () => {
         <h2>Registro</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Nombre"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Apellidos"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <input
+            type="date"
+            name="birthDate"
+            value={formData.birthDate}
+            onChange={handleChange}
+          />
           <input
             type="email"
             name="email"
