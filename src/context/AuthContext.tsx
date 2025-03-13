@@ -1,6 +1,12 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import { auth } from "../firebase-config"; // Importa Firebase Auth
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"; // Para escuchar cambios de autenticación
+import { auth } from "../firebase-config"; // Firebase Auth
+import { 
+  onAuthStateChanged, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut,
+  fetchSignInMethodsForEmail
+} from "firebase/auth";
 
 interface User {
   email: string;
@@ -10,9 +16,9 @@ interface User {
 interface AuthContextType {
   isLoggedIn: boolean;
   user: User | null;
-  register: (email: string, username: string) => void;
-  login: (email: string) => void;
-  logout: () => void;
+  register: (email: string, password: string, username: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -36,20 +42,54 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => unsubscribe();
   }, []);
 
-  const register = (email: string, username: string) => {
-    setUser({ email, username });
-    setIsLoggedIn(true);
+  // ✅ REGISTRAR USUARIO (VERIFICA SI EL EMAIL YA ESTÁ REGISTRADO)
+  const register = async (email: string, password: string, username: string) => {
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+
+      if (signInMethods.length > 0) {
+        alert("⚠️ Este correo ya está registrado. Intenta iniciar sesión.");
+        return;
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      setUser({ email: userCredential.user.email || "", username });
+      setIsLoggedIn(true);
+      alert("✅ Registro exitoso");
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("⚠️ Este correo ya está registrado. Intenta iniciar sesión.");
+      } else {
+        alert(`⚠️ Error al registrar: ${error.message}`);
+      }
+      console.error("Error al registrar usuario:", error);
+    }
   };
 
-  const login = (email: string) => {
-    setUser({ email, username: "" }); // Puedes cargar el username desde Firestore
-    setIsLoggedIn(true);
+  // ✅ INICIAR SESIÓN
+  const login = async (email: string, password: string) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setUser({ email: userCredential.user.email || "", username: "" });
+      setIsLoggedIn(true);
+      alert("✅ Inicio de sesión exitoso");
+    } catch (error: any) {
+      alert(`⚠️ Error al iniciar sesión: ${error.message}`);
+      console.error("Error al iniciar sesión:", error);
+    }
   };
 
+  // ✅ CERRAR SESIÓN
   const logout = async () => {
-    await auth.signOut();
-    setUser(null);
-    setIsLoggedIn(false);
+    try {
+      await signOut(auth);
+      setUser(null);
+      setIsLoggedIn(false);
+      alert("✅ Sesión cerrada exitosamente");
+    } catch (error: any) {
+      alert(`⚠️ Error al cerrar sesión: ${error.message}`);
+      console.error("Error al cerrar sesión:", error);
+    }
   };
 
   return (

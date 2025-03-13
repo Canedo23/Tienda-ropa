@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-import { useAuth } from "./AuthContext"; // Importamos el contexto de autenticación
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { useAuth } from "./AuthContext";
 
 interface Product {
   id: string;
   name: string;
   price: number;
-  image: string;  // 🔹 Agregamos la propiedad `image`
+  image: string;
   quantity: number;
 }
 
@@ -13,18 +13,34 @@ interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void; // 🔹 Agregamos `updateQuantity`
+  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
-  totalPrice: number; // 🔹 Agregamos `totalPrice`
+  totalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const [cart, setCart] = useState<Product[]>([]);
 
-  // 🔹 Función para agregar al carrito
+  // Cargar carrito desde localStorage al iniciar sesión
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      const savedCart = localStorage.getItem(`cart-${user.email}`);
+      setCart(savedCart ? JSON.parse(savedCart) : []);
+    } else {
+      setCart([]); // Vaciar carrito si no hay usuario autenticado
+    }
+  }, [isLoggedIn, user]);
+
+  // Guardar carrito en localStorage cuando cambie
+  useEffect(() => {
+    if (isLoggedIn && user) {
+      localStorage.setItem(`cart-${user.email}`, JSON.stringify(cart));
+    }
+  }, [cart, isLoggedIn, user]);
+
   const addToCart = (product: Product) => {
     if (!isLoggedIn) {
       alert("Debes iniciar sesión para agregar productos al carrito.");
@@ -42,7 +58,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // 🔹 Función para actualizar la cantidad de un producto
   const updateQuantity = (productId: string, quantity: number) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -51,18 +66,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  // 🔹 Función para calcular el total del carrito
-  const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-  // 🔹 Función para eliminar un producto del carrito
   const removeFromCart = (productId: string) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  // 🔹 Función para limpiar el carrito
   const clearCart = () => {
     setCart([]);
   };
+
+  const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalPrice }}>

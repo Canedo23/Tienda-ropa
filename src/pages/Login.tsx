@@ -35,14 +35,16 @@ const Login = () => {
         formData.email,
         formData.password
       );
-
-      // Actualizar el estado de autenticación
-      login(userCredential.user.email || "");
+    
+      // Llamar login con email y contraseña
+      login(userCredential.user.email || "", formData.password);
+    
       navigate("/");
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
       setError("Correo electrónico o contraseña incorrectos.");
     }
+    
   };
 
   return (

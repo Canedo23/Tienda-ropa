@@ -37,7 +37,7 @@ const Home = () => {
       </section>
 
       <section className="featured-products">
-        <h2>Productos Destacados</h2>
+        <h2>Productos Limitados</h2>
         <div className="featured-grid">
           {featuredProducts.map((product) => (
             <div key={product.id} className="featured-card">
