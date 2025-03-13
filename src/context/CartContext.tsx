@@ -1,58 +1,56 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import { useAuth } from "./AuthContext"; // Importamos el contexto de autenticación
 
-type CartItem = {
-  id: number;
+interface Product {
+  id: string;
   name: string;
   price: number;
   quantity: number;
-  image: string;
-};
+}
 
-type CartContextType = {
-  cart: CartItem[];
-  addToCart: (item: CartItem) => void;
-  removeFromCart: (id: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
+interface CartContextType {
+  cart: Product[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
   clearCart: () => void;
-  totalPrice: number;
-};
+}
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const { isLoggedIn, user } = useAuth(); // Verificamos si el usuario está autenticado
+  const [cart, setCart] = useState<Product[]>([]);
 
-  const addToCart = (item: CartItem) => {
+  // Función para agregar al carrito
+  const addToCart = (product: Product) => {
+    if (!isLoggedIn) {
+      alert("Debes iniciar sesión para agregar productos al carrito.");
+      return;
+    }
+
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
-      if (existingItem) {
-        return prevCart.map((cartItem) =>
-          cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
-      } else {
-        return [...prevCart, { ...item, quantity: 1 }];
       }
+      return [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  // Función para eliminar un producto del carrito
+  const removeFromCart = (productId: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
-  const updateQuantity = (id: number, quantity: number) => {
-    setCart((prevCart) =>
-      prevCart.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
-  };
-
+  // Función para limpiar el carrito
   const clearCart = () => {
     setCart([]);
   };
 
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalPrice }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
