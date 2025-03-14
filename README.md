@@ -1,4 +1,4 @@
-```
+
 # 🛒 Stüssy E-Commerce
 
 Este es un proyecto de e-commerce basado en **React, Firebase y React Router**. Permite a los usuarios registrarse, iniciar sesión y agregar productos a su carrito, que se guarda de manera independiente para cada usuario.
@@ -30,7 +30,7 @@ Antes de comenzar, asegúrate de tener instalado:
 ### 1️⃣ Clonar el repositorio
 
 ```sh
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone https://github.com/Canedo23/Tienda-ropa.git
 ```
 
 ```sh
