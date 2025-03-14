@@ -28,4 +28,4 @@ Antes de comenzar, asegúrate de tener instalado:
 
 1. **Clona este repositorio:**
    ```sh
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/Canedo23/Tienda-ropa.git
