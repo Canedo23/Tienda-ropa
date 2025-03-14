@@ -1,6 +1,7 @@
+```
 # 🛒 Stüssy E-Commerce
 
-Este es un proyecto de e-commerce basado en React, Firebase y React Router. Permite a los usuarios registrarse, iniciar sesión y agregar productos a su carrito, que se guarda de manera independiente para cada usuario.
+Este es un proyecto de e-commerce basado en **React, Firebase y React Router**. Permite a los usuarios registrarse, iniciar sesión y agregar productos a su carrito, que se guarda de manera independiente para cada usuario.
 
 ---
 
@@ -24,8 +25,91 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ---
 
-## 📥 Instalación
+## 📥 Instalación y configuración
 
-1. **Clona este repositorio:**
-   ```sh
-   git clone https://github.com/Canedo23/Tienda-ropa.git
+### 1️⃣ Clonar el repositorio
+
+```sh
+git clone https://github.com/tu-usuario/tu-repositorio.git
+```
+
+```sh
+cd nombre-del-proyecto
+```
+
+### 2️⃣ Instalar dependencias
+
+Ejecuta el siguiente comando para instalar todas las dependencias del proyecto:
+
+```sh
+npm install
+```
+
+---
+
+## 🔧 Configuración de Firebase
+
+Este proyecto usa **Firebase** para la autenticación y gestión de datos.
+
+### 1️⃣ Crear un proyecto en Firebase
+
+- Accede a [Firebase Console](https://console.firebase.google.com/).
+- Crea un nuevo proyecto y configura una aplicación web.
+
+### 2️⃣ Habilitar autenticación con correo y contraseña
+
+- En Firebase, ve a **Authentication** > **Métodos de inicio de sesión**.
+- Activa la opción **Correo y contraseña**.
+
+### 3️⃣ Configurar Firestore (opcional, si almacenas productos)
+
+- En Firebase, ve a **Firestore Database** y crea una base de datos en modo prueba.
+
+### 4️⃣ Obtener las credenciales del proyecto
+
+- En Firebase, ve a **Configuración del proyecto** > **Tus apps** > **SDK de configuración**.
+- Copia la configuración de Firebase.
+
+### 5️⃣ Configurar variables de entorno
+
+Crea un archivo `.env` en la raíz del proyecto y agrega las credenciales:
+
+```
+VITE_FIREBASE_API_KEY=tu_api_key
+VITE_FIREBASE_AUTH_DOMAIN=tu_auth_domain
+VITE_FIREBASE_PROJECT_ID=tu_project_id
+VITE_FIREBASE_STORAGE_BUCKET=tu_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=tu_messaging_sender_id
+VITE_FIREBASE_APP_ID=tu_app_id
+```
+
+---
+
+## ▶️ Ejecutar la aplicación
+
+Para iniciar el servidor de desarrollo, usa:
+
+```sh
+npm run dev
+```
+
+Esto ejecutará la aplicación en **http://localhost:5173/**.
+
+Si deseas generar una versión optimizada para producción, ejecuta:
+
+```sh
+npm run build
+```
+
+Esto creará una carpeta `dist/` con los archivos listos para ser desplegados.
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la licencia **MIT**. Puedes usarlo, modificarlo y distribuirlo libremente.
+
+---
+
+¡Gracias por visitar este proyecto! 🚀 Si tienes dudas o mejoras, abre un **issue** o un **pull request** en GitHub.  
+```
